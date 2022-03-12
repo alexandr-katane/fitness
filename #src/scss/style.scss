@@ -1,0 +1,889 @@
+//<Подключение шрифтов через Google fonts>=================================================================
+@import "mixins";
+
+@import "fonts";
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+//<Шрифт по умолчанию>=====================================================================================
+$fontFamily: "Red Hat Display";
+//</Шрифт по умолчанию>====================================================================================
+
+//<Переменные>=============================================================================================
+$minWidth: 320px;
+$maxWidth: 1440;
+$maxWidthContainer: 1400;
+$md1: $maxWidthContainer + 12;
+$md2: 991.98;
+$md3:767.98;
+$md4:479.98;
+//</Переменные>============================================================================================
+
+//<ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>=============================================================================
+@import "nullstyle";
+
+//</ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>============================================================================
+
+body {
+    font-family: $fontFamily;
+    &._lock {
+        overflow: hidden;
+    }
+}
+
+//<ОБОЛОЧКА>===============================================================================================
+.wrapper{
+    width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    &._load{
+    }
+
+    //Конец шаблона
+}
+//</ОБОЛОЧКА>==============================================================================================
+
+//<ОСНОВНАЯ СЕТКА>=========================================================================================
+._container{
+    max-width: $maxWidthContainer+px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+//</ОСНОВНАЯ СЕТКА>========================================================================================
+@import "icofont";
+@import "header";
+@import "ui";
+@import "swiper";
+@import "footer";
+
+.page {
+    @include responsive-size(padding-top, 50, 20, $maxWidthContainer);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.trainers {
+    background: #EEF0F4;
+    &__container {
+        @include responsive-size(padding-top, 80, 50, $maxWidthContainer);
+        @include responsive-size(padding-bottom, 150, 30, $maxWidthContainer);
+    }
+
+    &__row {
+        display: flex;
+        @media (max-width:$md3+px) {
+            flex-direction: column;
+        }
+    }
+
+    &__column {
+        flex: 0 1 50%;
+        width: 50%;
+        @media (max-width:$md3+px) {
+            width: 100%;
+            flex: 0 1 100%;
+        }
+        &_img {
+            @media (min-width:$md3+px) {
+                @include responsive-size(padding-right, 25, 0, $maxWidthContainer);
+            }
+        }
+
+        &_text {
+            @media (min-width:$md3+px) {
+                @include responsive-size(padding-right, 29, 0, $maxWidthContainer);
+                @include responsive-size(padding-left, 55, 0, $maxWidthContainer);
+            }
+        }
+    }
+
+    &__img-slider {
+
+    }
+
+    &__text-slider {
+        @include responsive-size(padding-top, 120, 30, $maxWidthContainer);
+        @include responsive-size(padding-bottom, 120, 0, $maxWidthContainer);
+
+    }
+}
+
+.img-slider {
+    height: 100%;
+
+    &__title {
+        font-family: "Permanent Marker";
+        line-height: 1.1;
+        letter-spacing: 1px;
+        color: #8EA5A0;
+        @include responsive-size(font-size, 64, 35, $maxWidthContainer);
+    }
+    &__body {
+        height: 100%;
+    }
+
+    &__slide {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__img-container {
+        position: relative;
+        height: 100%;
+
+        @media (max-width:$md3+px) {
+            padding-bottom: 100%;
+        }
+        @media (max-width: $md4+px) {
+            padding-bottom: 150%;
+        }
+    }
+    &__img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.img-slider {
+    position: relative;
+    &__controls {
+    }
+
+    &__arrow {
+        cursor: pointer;
+        position: absolute;
+        z-index: 4;
+        bottom: 50px;
+        background: rgba(8, 17, 88, 0.2);
+        border: 1px solid #081158;
+        border-radius: 50%;
+        @include responsive-size(width, 100, 50, $maxWidthContainer);
+        @include responsive-size(height, 100, 50, $maxWidthContainer);
+        transition: all 0.3s ease 0s;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &::before {
+            font-size: 25px;
+        }
+        @media (any-hover: hover) {
+            &:hover {
+                background: rgba(8, 17, 88, 0.8);
+            }
+        }
+        &_prev {
+            @include responsive-size(left, 50, 10, $maxWidthContainer);
+        }
+
+        &_next {
+            @include responsive-size(right, 50, 10, $maxWidthContainer);
+            transform: rotate(180deg);
+        }
+    }
+}
+
+.slide-text-slider {
+
+    &__content {
+    }
+
+    &__intro {
+        font-size: 14px;
+        line-height: 22px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #081158;
+        @include responsive-size(margin-bottom, 32, 15, $maxWidthContainer);
+    }
+
+    &__title {
+        @include responsive-size(font-size, 72, 35, $maxWidthContainer);
+        line-height: 1.1;
+        @include responsive-size(margin-bottom, 32, 15, $maxWidthContainer);
+        max-width: 550px;
+    }
+
+    &__text {
+        font-size: 20px;
+        line-height: 36px;
+        margin-bottom: 25px;
+        max-width: 500px;
+    }
+
+    &__button {
+    }
+}
+
+.socials-trainer {
+    background: #081158;
+
+    &__container {
+    }
+
+    &__slider {
+    }
+
+    &__body {
+    }
+
+    &__slide {
+    }
+
+    &__items {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(202px, 1fr));
+        @include responsive-size(row-gap, 50, 30, $maxWidthContainer);
+        @include responsive-size(column-gap, 50, 30, $maxWidthContainer);
+        @include responsive-size(padding-top, 40, 30, $maxWidthContainer);
+        @include responsive-size(padding-bottom, 70, 50, $maxWidthContainer);
+    }
+
+    &__item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include responsive-size(padding-top, 50, 30, $maxWidthContainer);
+        @include responsive-size(padding-bottom, 50, 30, $maxWidthContainer);
+        font-size: 13px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #DFDFDF;
+        transition: all 0.3s ease 0s;
+        @media (any-hover:hover) {
+            &:hover {
+                color: #fff;
+            }
+        }
+    }
+}
+
+//=========================================================================================================
+
+.coatching {
+    padding-top: 78px;
+    @include responsive-size(padding-bottom, 178, 80, $maxWidthContainer);
+    
+    &__container {
+        text-align: center;
+    }
+
+    &__title {
+        line-height: 1.1;
+        max-width: 705px;
+        margin: 0 auto 26px;
+        @include responsive-size(font-size,62, 35, $maxWidthContainer);
+        
+    }
+
+    &__link {
+        @include responsive-size(margin-bottom, 100, 50, $maxWidthContainer);
+    }
+
+    &__items {    
+        @media (min-width:$md3+px) {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(200px,400px));
+            justify-content: space-between;
+            @include responsive-size(row-gap, 100, 30, $maxWidthContainer);
+            column-gap: 30px;
+            @include responsive-size(padding-left, 185, 0, $maxWidthContainer);
+            @include responsive-size(padding-right, 185, 0, $maxWidthContainer);
+
+        }
+    }
+
+    &__item {
+        @media (max-width:$md3+px) {
+            &:not(:last-child) {
+                @include responsive-size(margin-bottom, 70, 30, $md3);
+            }
+        }
+    }
+}
+
+.item-coatching {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    &__container {
+        @include responsive-size(padding-left, 50, 0, $maxWidthContainer);
+        @include responsive-size(padding-right, 50, 0, $maxWidthContainer);
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__img-container {
+        position: relative;
+        padding-bottom: 100%;
+        @include responsive-size(margin-bottom, 30, 15, $maxWidthContainer);
+    }
+
+    &__img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        right: 0;
+    }
+
+    &__title {
+        @include responsive-size(font-size, 30, 25, $maxWidthContainer);
+        line-height: 1.1;
+        @include responsive-size(margin-bottom, 30, 15, $maxWidthContainer);
+    }
+
+    &__text {
+        align-self: start;
+        font-size: 16px;
+        line-height: 29px;
+        padding: 0 5px 7px;
+    }
+}
+
+//=========================================================================================================
+
+.plans {
+    background: #EEF0F4;
+    position: relative;
+    @include responsive-size(padding-top, 150, 70, $maxWidthContainer);
+    @include responsive-size(padding-bottom, 150, 70, $maxWidthContainer);
+
+    &__container {
+        position: relative;
+        z-index: 2;
+    }
+
+    &__title {
+        line-height: 1.15; 
+        max-width: 790px;
+        @include responsive-size(font-size, 86, 35, $maxWidthContainer);
+        @include responsive-size(margin-bottom, 30, 20, $maxWidthContainer);
+    }
+
+    &__text {
+        @include responsive-size(font-size, 20, 16, $maxWidthContainer);
+        line-height: 1.8;
+        max-width: 590px;
+        margin-bottom: 25px;
+    }
+
+    &__link {
+        &::before {
+            margin-right: 30px;
+        }
+    }
+
+    &__items {
+        @include responsive-size(margin-top, 100, 50, $maxWidthContainer);
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        @media (max-width:$md4+px) {
+            grid-template-columns: minmax(270px, 1fr);
+        }
+        column-gap: 50px;
+        @include responsive-size(row-gap, 50, 30, $maxWidthContainer);
+        &_b{
+            @include responsive-size(margin-top, 162, 50, $maxWidthContainer);
+        }
+    }
+
+    &__back {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+    }
+
+    &__plan {
+    }
+}
+
+.plan {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background-color: #fff;
+    &::before {
+        content: '';
+        transition: all 0.3s ease 0s;
+    }
+    @media (any-hover:hover) {
+        &:hover {
+            &::before {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                z-index: 2;
+                border: 4px solid #1a08a2;
+            }
+            .plan__try {
+                color: rgb(194, 11, 11);
+            }
+        }
+    }
+    &__img-container {
+        position: relative;
+        padding-bottom: 95%;
+    }
+
+    &__img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__body {
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    &__period {
+        font-size: 14px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #081158;
+        padding-right: 10px;
+    }
+
+    &__prices {
+        text-align: right;
+    }
+
+    &__new-price {
+        font-family: 'Permanent Marker';
+        font-size: 16px;
+        letter-spacing: 1px;
+        color: #EC8675;
+        line-height: 18px;
+    }
+
+    &__old-price{
+        font-family: 'Permanent Marker';
+        font-size: 11px;
+        letter-spacing: 1px;
+        color: #AFAFAF;
+        line-height: 13px;
+    }
+
+    &__title {
+        font-family: Roboto;
+        @include responsive-size(font-size, 24, 20, $maxWidthContainer);
+        line-height: 1.12;
+        letter-spacing: 0.5px;
+        color: #081158;
+        flex: 1 0 auto;
+        margin-bottom: 15px;
+    }
+
+    &__try {
+        font-size: 14px;
+        line-height: 22px;
+        letter-spacing: 0.5px;
+        color: #081158;
+        padding-left: 12px;
+        transition: all 0.3s ease 0s;
+    }
+}
+
+//=========================================================================================================
+
+.motivation {
+    position: relative;
+    &__back {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__body {
+        @include responsive-size(padding-top,235,90,$maxWidthContainer);
+        @include responsive-size(padding-bottom,255,100,$maxWidthContainer);
+        position: relative;
+        z-index: 2;
+    }
+
+    &__text {
+        text-align: center;
+        font-family: 'Permanent Marker';
+        line-height: 1.1;
+        letter-spacing: 1px;
+        color: #FFFFFF;
+        @include responsive-size(font-size,64,30,$maxWidthContainer);
+        padding: 0 15px;
+    }
+}
+
+//=========================================================================================================
+
+.information {
+    @include responsive-size(padding-top, 150, 70, $maxWidthContainer);
+    @include responsive-size(padding-bottom, 150, 70, $maxWidthContainer);
+
+    &__container {
+    }
+
+    &__row {
+        display: flex;
+        @media (max-width:$md3+px) {
+            flex-direction: column;
+        }
+    }
+
+    &__column {
+        flex: 0 1 50%;
+        @media (max-width:$md3+px) {
+            flex: 1 1 100%;
+        }
+        &_img {
+            @media (min-width:$md3+px) {
+                @include responsive-size(padding-right, 64, 0, $maxWidthContainer);
+                @include responsive-size(padding-left, 113, 0, $maxWidthContainer);
+                padding-bottom: 10px;
+            }
+
+            @media (max-width:$md3+px) {
+                margin-top: 30px;
+            }
+        }
+    }
+
+    &__img-container {
+        position: relative;
+        height: 100%;
+        @media (max-width:$md3+px) {
+            padding-bottom: 100%;
+        }
+    }
+
+    &__content {
+        @media (min-width:$md3+px) {
+            padding-right: 15px;
+        }
+    }
+
+    &__title {
+        font-family: Roboto;
+        @include responsive-size(font-size, 60, 35, $maxWidthContainer);
+        line-height: 1.17;
+        max-width: 525px;
+        @include responsive-size(margin-bottom, 30, 15, $maxWidthContainer);
+    }
+
+    &__text {
+        font-size: 20px;
+        line-height: 1.8;
+        max-width: 486px;
+        margin-bottom: 20px;
+    }
+
+    &__link {
+        &::before {
+            margin-right: 17px;
+        }
+    }
+
+    &__img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+//=========================================================================================================
+
+.full-screen {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+
+    &__img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+}
+
+//=========================================================================================================
+
+.tips {
+    @include responsive-size(padding-top, 150, 70, $maxWidthContainer);
+    @include responsive-size(padding-bottom, 150, 70, $maxWidthContainer);
+
+    &__container {
+    }
+    &__intro-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    &__title {
+        @include responsive-size(font-size, 61, 35, $maxWidthContainer);
+        line-height: 1.15;
+        text-align: center;
+        @include responsive-size(margin-bottom, 34, 15, $maxWidthContainer);
+    }
+
+    &__text {
+        @include responsive-size(font-size, 20, 16, $maxWidthContainer);
+        line-height: 1.8;
+        text-align: center;
+        max-width: 775px;
+        @include responsive-size(margin-bottom, 25, 15, $maxWidthContainer);
+    }
+
+    &__link {
+    }
+
+    &__items {
+        @include responsive-size(margin-top, 100, 50, $maxWidthContainer);
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(270px , 1fr));
+        @include responsive-size(gap, 50, 30, $maxWidthContainer);
+    }
+
+    &__item {
+    }
+}
+
+.item-tips {
+    position: relative;
+    padding-bottom: 142%;
+    @media (any-hover:hover) {
+        &:hover {
+            .item-tips__hover {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    }
+    &__img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__hover {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: end;
+        @include responsive-size(padding-left, 30, 10, $maxWidthContainer);
+        @include responsive-size(padding-right, 30, 10, $maxWidthContainer);
+        @include responsive-size(padding-bottom, 30, 20, $maxWidthContainer);
+        @include responsive-size(padding-bottom, 60, 20, 604);
+        background-color: rgba(255, 255, 255, 0.5);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease 0s;
+    }
+
+    &__container {
+        width: 100%;
+    }
+
+    &__tip {
+        font-size: 11px;
+        line-height: 22px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        color: #081158;
+        padding: 1px 5px;
+        display: inline-block;
+        background: #CFDDEE;
+        border-radius: 3px;
+        @include responsive-size(margin-bottom, 30, 15, $maxWidthContainer);
+    }
+
+    &__content {
+        @include responsive-size(padding-left, 20, 10, $maxWidthContainer);
+        @include responsive-size(padding-right, 20, 10, $maxWidthContainer);
+    }
+
+    &__person {
+        display: flex;
+        align-items: center;
+        @include responsive-size(margin-bottom, 15, 10, $maxWidthContainer);
+    }
+
+    &__avatar {
+        width: 30px;
+        height: 30px;
+    }
+
+    &__name {
+        font-size: 12px;
+        line-height: 17px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #081158;
+        margin-left: 10px;
+    }
+
+    &__title {
+        font-family: Roboto;
+        line-height: 1.13;
+        letter-spacing: 0.5px;
+        color: #081158;
+        @include responsive-size(margin-bottom, 15, 10, $maxWidthContainer);
+        @include responsive-size(font-size, 24, 16, $maxWidthContainer);
+        @include responsive-size(font-size, 24, 16, 604);
+
+    }
+
+    &__text {
+        font-size: 14px;
+        line-height: 22px;
+        letter-spacing: 0.5px;
+        color: #081158;
+        margin-left: 13px;
+    }
+}
+
+//=========================================================================================================
+
+.socials {
+    @include responsive-size(padding-top, 150, 70, $maxWidthContainer);
+    @include responsive-size(padding-bottom, 150, 70, $maxWidthContainer);
+    background: #EEF0F4;
+    position: relative;
+
+    &__gallery {
+        &:not(:last-child){
+            margin-bottom: 100px;
+        }
+    }
+
+    &__social {
+    }
+}
+
+.social {
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+    background: #EC8675;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    &__body {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__items {
+        display: flex;
+        @include responsive-size(padding-top, 94, 40, $maxWidthContainer);
+        @include responsive-size(padding-bottom, 94, 40, $maxWidthContainer);
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        margin: 0 -39px;
+    }
+
+    &__link {
+        font-size: 30px;
+        line-height: 22px;
+        letter-spacing: 0.5px;
+        color: #FFFFFF;
+        display: flex;
+        @include responsive-size(padding-right, 39, 10, $maxWidthContainer);
+        @include responsive-size(padding-left, 39, 10, $maxWidthContainer);
+        transition: all 0.3s ease 0s;
+        span {
+            padding-top: 7px;
+        }
+        &::before {
+            transition: all 0.3s ease 0s;
+            @include responsive-size(font-size, 50, 40, $maxWidthContainer);
+            @include responsive-size(padding-right, 13, 5, $maxWidthContainer);
+        }
+        @media (any-hover:hover) {
+            &:hover {
+                color: #919191;
+                &::before {
+                    color: #919191;
+                }
+            }
+        }
+    }
+}
+
+.gallery-socials {
+
+    &__body {
+        position: relative;
+        @media (any-hover: none) {
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+    }
+
+    &__items {
+        display: grid;
+        gap: 100px;
+        @include responsive-size(gap, 100, 0, $maxWidthContainer);
+        grid-template-columns: auto;
+        grid-auto-flow: column;
+        align-items: center;
+        @media (any-hover: hover) {
+            justify-content: center;
+        }       
+    }
+
+    &__column {
+        padding: 0 15px;
+    }
+
+    &__item {
+        position: relative;
+        @include responsive-size(width, 400, 280, $maxWidthContainer);
+        @include responsive-size(height, 400, 280, $maxWidthContainer);
+    }
+
+    &__img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+}
+
